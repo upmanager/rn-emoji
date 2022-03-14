@@ -83,6 +83,8 @@ const PickerPropTypes = {
   notFoundEmoji: PropTypes.string,
   categoryEmojis: PropTypes.objectOf(PropTypes.string),
   fontSize: PropTypes.number,
+  fullWidth: PropTypes.bool,
+  showSearch: PropTypes.bool
 }
 
 export {EmojiPropTypes, PickerPropTypes}

@@ -11,19 +11,19 @@ const EmojiDefaultProps = {
     uri: `https://unpkg.com/emoji-datasource-${set}@${EMOJI_DATASOURCE_VERSION}/img/${set}/sheets-256/${sheetSize}.png`,
   }),
   emojiImageFn: (image) => image,
-  onPress: () => {},
-  onLongPress: () => {},
+  onPress: () => { },
+  onLongPress: () => { },
   useLocalImages: false,
   margin: 14,
   noMargin: false,
 }
 
 const PickerDefaultProps = {
-  onPress: () => {},
-  onLongPress: () => {},
-  onSelect: () => {},
-  onPressClose: () => {},
-  onSkinChange: () => {},
+  onPress: () => { },
+  onLongPress: () => { },
+  onSelect: () => { },
+  onPressClose: () => { },
+  onSkinChange: () => { },
   emojiSize: 30,
   emojiMargin: EmojiDefaultProps.margin,
   anchorSize: 24,
@@ -54,10 +54,12 @@ const PickerDefaultProps = {
   custom: [],
   skinEmoji: '',
   skinEmojiSize: 28,
-  notFound: () => {},
+  notFound: () => { },
   notFoundEmoji: 'sleuth_or_spy',
   categoryEmojis: {},
   fontSize: 15,
+  fullWidth: false,
+  showSearch: true,
 }
 
-export {PickerDefaultProps, EmojiDefaultProps}
+export { PickerDefaultProps, EmojiDefaultProps }

@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/upmanager/rn-emoji/issues"
   },
-  "homepage": "https://github.com/upmanager/rn-emoji/",
+  "homepage": "https://upmanager.github.io/rn-emoji/",
   "dependencies": {
     "@babel/runtime": "^7.16.7",
     "prop-types": "^15.6.0"
