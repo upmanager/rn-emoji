@@ -1,9 +1,3 @@
-<h1 align="center">Sponsors &amp; Backers</h1>
-
-The ongoing development of <b>Emoji Mart Native</b> is made possible entirely by the support of these awesome [backers](https://github.com/upmanager/rn-emoji/blob/master/BACKERS.md). If you'd like to join them, please consider becoming a [backer or sponsor on GitHub](https://github.com/sponsors/pederjohnsen).
-
-<br><br>
-
 <h2 align="center">Platinum Sponsors</h2>
 
 <!--platinum start-->

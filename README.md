@@ -4,12 +4,6 @@
   <br><br><a href="https://travis-ci.com/upmanager/rn-emoji"><img src="https://travis-ci.com/upmanager/rn-emoji.svg?branch=master" alt="Build Status"></a>
 </p>
 
-<h2 align="center">Supporting rn-emoji</h2>
-
-The ongoing development of <b>Emoji Mart Native</b> is made possible entirely by the support of these awesome [backers](https://github.com/upmanager/rn-emoji/blob/master/BACKERS.md). If you'd like to join them, please consider becoming a [backer or sponsor on GitHub](https://github.com/sponsors/pederjohnsen).
-
-<h3 align="center">Platinum Sponsors</h3>
-
 <!--platinum start-->
 <!--<table>
   <tbody>
