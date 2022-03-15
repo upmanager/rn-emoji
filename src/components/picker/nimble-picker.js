@@ -491,13 +491,13 @@ export default class NimblePicker extends React.PureComponent {
       skinEmoji,
       skinEmojiSize,
       fontSize,
-      fullWidth,
+      fullSize,
       showSearch,
     } = this.props
 
     const emojiSizing = emojiSize + emojiMargin
     const _WIDTH = Dimensions.get('window').width;
-    const emojisListWidth = fullWidth ? _WIDTH : perLine * emojiSizing + emojiMargin + 2
+    const emojisListWidth = perLine * emojiSizing + emojiMargin + 2
     const emojisListHeight = rows * emojiSizing + emojiMargin
 
     var perLineFullWidth = Math.floor((_WIDTH - emojiMargin - 2) / emojiSizing);
@@ -510,142 +510,153 @@ export default class NimblePicker extends React.PureComponent {
       this.props.defaultSkin
 
     return (
-      <View
-        style={[
-          styles.emojiMartPicker,
-          theme === 'light'
-            ? styles.emojiMartPickerLight
-            : styles.emojiMartPickerDark,
-          { ...style },
-          { width: emojisListWidth },
-        ]}
-      >
-        <Search
-          ref={this.setSearchRef}
-          onSearch={this.handleSearch}
-          data={this.data}
-          i18n={this.i18n}
-          emojisToShowFilter={emojisToShowFilter}
-          include={include}
-          exclude={exclude}
-          custom={this.CUSTOM}
-          autoFocus={autoFocus}
-          onPressClose={onPressClose}
-          showSkinTones={showSkinTones}
-          showSearch={showSearch}
-          skinsProps={{
-            skin,
-            onChange: this.handleSkinChange,
-            skinEmoji: skinEmoji,
-            skinEmojiSize: skinEmojiSize,
-          }}
-          emojiProps={{
-            native,
-            skin,
-            size: 28,
-            set,
-            forceSize: native,
-            emojiImageFn,
-            useLocalImages,
-          }}
-          showCloseButton={showCloseButton}
-          theme={theme}
-          fontSize={fontSize}
-        />
-
-        <ScrollView
-          ref={this.setScrollViewRef}
-          onLayout={this.onScrollViewLayout}
-          onContentSizeChange={this.onScrollViewContentSizeChange}
+      <View style={[
+        styles.emojiMartPicker,
+        theme === 'light'
+          ? styles.emojiMartPickerLight
+          : styles.emojiMartPickerDark,
+        {
+          width: fullSize ? '100%' : emojisListWidth,
+          height: fullSize ? '100%' : emojisListHeight,
+        }
+      ]}>
+        <View
           style={[
-            styles.emojiMartScroll,
-            {
-              width: emojisListWidth,
-              height: emojisListHeight,
-            },
+            styles.emojiMartPicker,
+            theme === 'light'
+              ? styles.emojiMartPickerLight
+              : styles.emojiMartPickerDark,
+            { ...style },
+            { width: emojisListWidth },
           ]}
-          onScroll={this.onScroll}
-          horizontal
-          pagingEnabled
-          scrollEventThrottle={100}
-          keyboardShouldPersistTaps="handled"
         >
-          {this.getCategories().map((category, i) => {
-            return (
-              <Category
-                ref={this.setCategoryRef.bind(this, `category-${i}`)}
-                key={category.name}
-                id={category.id}
-                name={category.name}
-                emojis={category.emojis}
-                perLine={fullWidth ? perLineFullWidth : perLine}
-                rows={rows}
-                pagesToEagerLoad={pagesToEagerLoad}
-                native={native}
+          <Search
+            ref={this.setSearchRef}
+            onSearch={this.handleSearch}
+            data={this.data}
+            i18n={this.i18n}
+            emojisToShowFilter={emojisToShowFilter}
+            include={include}
+            exclude={exclude}
+            custom={this.CUSTOM}
+            autoFocus={autoFocus}
+            onPressClose={onPressClose}
+            showSkinTones={showSkinTones}
+            showSearch={showSearch}
+            skinsProps={{
+              skin,
+              onChange: this.handleSkinChange,
+              skinEmoji: skinEmoji,
+              skinEmojiSize: skinEmojiSize,
+            }}
+            emojiProps={{
+              native,
+              skin,
+              size: 28,
+              set,
+              forceSize: native,
+              emojiImageFn,
+              useLocalImages,
+            }}
+            showCloseButton={showCloseButton}
+            theme={theme}
+            fontSize={fontSize}
+          />
+
+          <ScrollView
+            ref={this.setScrollViewRef}
+            onLayout={this.onScrollViewLayout}
+            onContentSizeChange={this.onScrollViewContentSizeChange}
+            style={[
+              styles.emojiMartScroll,
+              {
+                width: emojisListWidth,
+                height: emojisListHeight,
+              },
+            ]}
+            onScroll={this.onScroll}
+            horizontal
+            pagingEnabled
+            scrollEventThrottle={100}
+            keyboardShouldPersistTaps="handled"
+          >
+            {this.getCategories().map((category, i) => {
+              return (
+                <Category
+                  ref={this.setCategoryRef.bind(this, `category-${i}`)}
+                  key={category.name}
+                  id={category.id}
+                  name={category.name}
+                  emojis={category.emojis}
+                  perLine={fullSize ? perLineFullWidth : perLine}
+                  rows={rows}
+                  pagesToEagerLoad={pagesToEagerLoad}
+                  native={native}
+                  data={this.data}
+                  i18n={this.i18n}
+                  recent={
+                    category.id == this.RECENT_CATEGORY.id ? recent : undefined
+                  }
+                  custom={
+                    category.id == this.RECENT_CATEGORY.id
+                      ? this.CUSTOM
+                      : undefined
+                  }
+                  initialPosition={this.scrollViewScrollLeft}
+                  emojiProps={{
+                    native,
+                    skin,
+                    size: emojiSize,
+                    margin: emojiMargin,
+                    set,
+                    sheetSize,
+                    sheetColumns,
+                    sheetRows,
+                    forceSize: native,
+                    tooltip: emojiTooltip,
+                    spriteSheetFn,
+                    emojiImageFn,
+                    useLocalImages,
+                    onPress: this.handleEmojiPress,
+                    onLongPress: this.handleEmojiLongPress,
+                  }}
+                  notFound={notFound}
+                  notFoundEmoji={notFoundEmoji}
+                  theme={theme}
+                  fontSize={fontSize}
+                />
+              )
+            })}
+          </ScrollView>
+
+          {showAnchors ? (
+            <View style={styles.emojiMartAnchors}>
+              <Anchors
+                ref={this.setAnchorsRef}
                 data={this.data}
                 i18n={this.i18n}
-                recent={
-                  category.id == this.RECENT_CATEGORY.id ? recent : undefined
-                }
-                custom={
-                  category.id == this.RECENT_CATEGORY.id
-                    ? this.CUSTOM
-                    : undefined
-                }
-                initialPosition={this.scrollViewScrollLeft}
+                color={color}
+                categories={this.categories}
+                onAnchorPress={this.handleAnchorPress}
+                categoryEmojis={this.categoryEmojis}
                 emojiProps={{
                   native,
                   skin,
-                  size: emojiSize,
-                  margin: emojiMargin,
+                  size: anchorSize,
                   set,
                   sheetSize,
                   sheetColumns,
                   sheetRows,
                   forceSize: native,
-                  tooltip: emojiTooltip,
                   spriteSheetFn,
                   emojiImageFn,
                   useLocalImages,
-                  onPress: this.handleEmojiPress,
-                  onLongPress: this.handleEmojiLongPress,
                 }}
-                notFound={notFound}
-                notFoundEmoji={notFoundEmoji}
                 theme={theme}
-                fontSize={fontSize}
               />
-            )
-          })}
-        </ScrollView>
-
-        {showAnchors ? (
-          <View style={styles.emojiMartAnchors}>
-            <Anchors
-              ref={this.setAnchorsRef}
-              data={this.data}
-              i18n={this.i18n}
-              color={color}
-              categories={this.categories}
-              onAnchorPress={this.handleAnchorPress}
-              categoryEmojis={this.categoryEmojis}
-              emojiProps={{
-                native,
-                skin,
-                size: anchorSize,
-                set,
-                sheetSize,
-                sheetColumns,
-                sheetRows,
-                forceSize: native,
-                spriteSheetFn,
-                emojiImageFn,
-                useLocalImages,
-              }}
-              theme={theme}
-            />
-          </View>
-        ) : null}
+            </View>
+          ) : null}
+        </View>
       </View>
     )
   }

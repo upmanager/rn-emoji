@@ -141,7 +141,7 @@ import { Picker } from 'rn-emoji'
 | **notFound** | | | [Not Found](#not-found) |
 | **categoryEmojis** | | `{}` | [Custom category emojis](#custom-category-emojis) |
 | **fontSize** | | 15 | Font size used for all text in the picker |
-| **fullWidth** | | `false` | full width |
+| **fullSize** | | `false` | full size |
 | **showSearch** | | `true` | Show/hide search bar |
 
 #### I18n

@@ -58,7 +58,7 @@ const PickerDefaultProps = {
   notFoundEmoji: 'sleuth_or_spy',
   categoryEmojis: {},
   fontSize: 15,
-  fullWidth: false,
+  fullSize: false,
   showSearch: true,
 }
 

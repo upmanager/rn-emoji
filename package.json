@@ -1,6 +1,6 @@
 {
   "name": "rn-emoji",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Customizable emoji picker for React Native",
   "main": "dist/index.js",
   "repository": {
