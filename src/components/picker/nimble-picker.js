@@ -55,6 +55,8 @@ const styles = StyleSheet.create({
   emojiMartPicker: {
     flexShrink: 0,
     flexDirection: 'column',
+    justifyContent: "center",
+    alignItems: "center"
   },
   emojiMartPickerLight: {
     color: '#222427',
@@ -499,7 +501,7 @@ export default class NimblePicker extends React.PureComponent {
     const emojisListWidth = fullWidth ? _WIDTH : perLine * emojiSizing + emojiMargin + 2
     const emojisListHeight = rows * emojiSizing + emojiMargin
 
-    var perLineFullWidth = (_WIDTH - emojiMargin - 2) / emojiSizing;
+    var perLineFullWidth = Math.floor((_WIDTH - emojiMargin - 2) / emojiSizing);
 
     const theme = this.getPreferredTheme()
     const skin =
