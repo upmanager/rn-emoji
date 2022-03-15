@@ -491,6 +491,7 @@ export default class NimblePicker extends React.PureComponent {
       skinEmojiSize,
       fontSize,
       fullWidth,
+      showSearch,
     } = this.props
 
     const emojiSizing = emojiSize + emojiMargin
@@ -530,6 +531,7 @@ export default class NimblePicker extends React.PureComponent {
           autoFocus={autoFocus}
           onPressClose={onPressClose}
           showSkinTones={showSkinTones}
+          showSearch={showSearch}
           skinsProps={{
             skin,
             onChange: this.handleSkinChange,
