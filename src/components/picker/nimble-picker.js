@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
   emojiMartPicker: {
     flexShrink: 0,
     flexDirection: 'column',
-    justifyContent: "center",
     alignItems: "center"
   },
   emojiMartPickerLight: {
